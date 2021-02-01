@@ -1,6 +1,7 @@
 const CustomError = require("../extensions/custom-error");
 
 module.exports = function transform(arr) {
+
   const DISCARD_PREV = '--discard-prev';
   const DOUBLE_PREV = '--double-prev';
   const DOUBLE_NEXT = '--double-next';
@@ -8,14 +9,14 @@ module.exports = function transform(arr) {
 
   let newArr = [];
   let endCount = arr.length;
-
+  // console.log(arr)
   if (arr[arr.length - 1] === DOUBLE_NEXT || arr[arr.length - 1] === DISCARD_NEXT) {
-    endCount = arr.length - 1
+    endCount = endCount - 1
   }
 
   for (let i = 0; i < endCount; i++) {
 
-    if ((arr[0] === DISCARD_PREV && arr[i] === DISCARD_PREV) || (arr[0] === DOUBLE_PREV && arr[i] === DOUBLE_PREV)) {
+    if ((arr[i] === DISCARD_PREV && i === 0) || (arr[i] === DOUBLE_PREV && i === 0)) {
       continue
     }
 
