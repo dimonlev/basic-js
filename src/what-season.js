@@ -2,7 +2,8 @@ const CustomError = require("../extensions/custom-error");
 
 module.exports = function getSeason(date) {
   if (!date)
-    return 'Unable to determine the time of year!'
+    return 'Unable to determine the time of year!';
+  if (!(date instanceof Date) || isNaN(date)) throw new Error();
   let month = date.getMonth();
   if (month === 11 || month === 0 || month === 1) {
     return 'winter'
@@ -16,12 +17,6 @@ module.exports = function getSeason(date) {
   else if (month === 8 || month === 9 || month === 10) {
     return 'autumn'
   }
-  else
 
-
-
-
-
-    throw new CustomError('Not implemented');
-  // remove line with error and write your code here
+  //   throw new CustomError('Not implemented');
 };
