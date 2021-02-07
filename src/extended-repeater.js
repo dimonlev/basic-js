@@ -1,41 +1,26 @@
 const CustomError = require("../extensions/custom-error");
-
 module.exports = function repeater(str, options) {
-
   let newStr = String(str);
-  let repeatTimes = options.repeatTimes;
-  let additionRepeatTimes = 1;
-  let separator = "+";
-  let additionSeparator = "|";
-  let addition = "";
-  let separatorPlusAddition = separator + addition;
-  let separatorPlusNewStr = separator + newStr;
+  let repeatTimes = options.hasOwnProperty('repeatTimes') ? options.repeatTimes : 1;
+  let additionRepeatTimes = options.hasOwnProperty('additionRepeatTimes') ? options.additionRepeatTimes : 1;
+  let addition = options.hasOwnProperty('addition') ? String(options.addition) : '';
+  let separator = options.hasOwnProperty('separator') ? String(options.separator) : '+';
+  let additionSeparator = options.hasOwnProperty('additionSeparator') ? String(options.additionSeparator) : '|';
+
 
   if (options.repeatTimes === undefined) {
     return newStr + String(options.addition)
   }
 
-  // if (options.hasOwnProperty(additionRepeatTimes)) {
-  //   additionRepeatTimes = options.additionRepeatTimes;
-  // }
-  if (options.hasOwnProperty("separator")) {
-    separator = String(options.separator);
+  for (let i = 1; i < additionRepeatTimes; i++) {
+    addition = addition + additionSeparator + String(options.addition)
   }
-  // if (options.hasOwnProperty(additionSeparator)) {
-  //   additionSeparator = String(options.additionSeparator);
-  // }
-  // if (options.hasOwnProperty(addition)) {
-  //   addition = String(options.addition);
-
+  newStr = newStr + addition;
 
   for (let i = 1; i < repeatTimes; i++) {
-    for (let k = 1; k < additionRepeatTimes; k++) {
-      addition = addition + separatorPlusAddition;
-    }
     newStr = newStr + separator + String(str) + addition;
   }
 
-  return newStr;
-  // throw new CustomError('Not implemented');
-  // remove line with error and write your code here
+
+  return newStr
 }
