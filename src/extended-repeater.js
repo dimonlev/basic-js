@@ -32,7 +32,7 @@ module.exports = function repeater(str, options) {
     for (let k = 1; k < additionRepeatTimes; k++) {
       addition = addition + separatorPlusAddition;
     }
-    newStr = newStr + separator + String(str);
+    newStr = newStr + separator + String(str) + addition;
   }
 
   return newStr;
