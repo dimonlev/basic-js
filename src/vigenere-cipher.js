@@ -1,13 +1,29 @@
+const { AssertionError } = require("chai");
 const CustomError = require("../extensions/custom-error");
 
 class VigenereCipheringMachine {
-  encrypt() {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
-  }    
-  decrypt() {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
+  constructor(reverse = true) {
+    this.reverse = reverse;
+  }
+
+  encrypt(str, key) {
+    if (!str || !key) {
+      throw new Error()
+    }
+
+    let newStr = "";
+    let keyStr = "";
+
+    return newStr;
+  }
+
+  decrypt(str, key) {
+    if (!str || !key) {
+      throw new Error()
+    }
+    let newStr = "";
+
+    return newStr;
   }
 }
 
